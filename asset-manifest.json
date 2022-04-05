@@ -1,17 +1,18 @@
 {
   "files": {
     "main.css": "/roseplayerreact/static/css/main.121c8f5b.css",
-    "main.js": "/roseplayerreact/static/js/main.7315fa5f.js",
+    "main.js": "/roseplayerreact/static/js/main.0da60c22.js",
     "static/js/787.81efce26.chunk.js": "/roseplayerreact/static/js/787.81efce26.chunk.js",
     "static/media/austin-neill-hgO1wFPXl3I-unsplash.jpg": "/roseplayerreact/static/media/austin-neill-hgO1wFPXl3I-unsplash.3714d3b2c681a360bfc0.jpg",
     "static/media/logo.svg": "/roseplayerreact/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/roseplayerreact/index.html",
+    "static/media/music_note_black_48dp.svg": "/roseplayerreact/static/media/music_note_black_48dp.dcaf0bb31bf667dd5fd30279011d99a6.svg",
     "main.121c8f5b.css.map": "/roseplayerreact/static/css/main.121c8f5b.css.map",
-    "main.7315fa5f.js.map": "/roseplayerreact/static/js/main.7315fa5f.js.map",
+    "main.0da60c22.js.map": "/roseplayerreact/static/js/main.0da60c22.js.map",
     "787.81efce26.chunk.js.map": "/roseplayerreact/static/js/787.81efce26.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.121c8f5b.css",
-    "static/js/main.7315fa5f.js"
+    "static/js/main.0da60c22.js"
   ]
 }
