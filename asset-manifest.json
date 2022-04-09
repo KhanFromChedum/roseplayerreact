@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/roseplayerreact/static/css/main.7ed96519.css",
-    "main.js": "/roseplayerreact/static/js/main.91e71b68.js",
+    "main.css": "/roseplayerreact/static/css/main.2b568321.css",
+    "main.js": "/roseplayerreact/static/js/main.91d93407.js",
     "static/js/787.81efce26.chunk.js": "/roseplayerreact/static/js/787.81efce26.chunk.js",
     "static/media/austin-neill-hgO1wFPXl3I-unsplash.jpg": "/roseplayerreact/static/media/austin-neill-hgO1wFPXl3I-unsplash.3714d3b2c681a360bfc0.jpg",
     "static/media/Phone.jpg": "/roseplayerreact/static/media/Phone.cd273d74b1f9cb141a48.jpg",
     "static/media/logo.svg": "/roseplayerreact/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/roseplayerreact/index.html",
     "static/media/music_note_black_48dp.svg": "/roseplayerreact/static/media/music_note_black_48dp.dcaf0bb31bf667dd5fd30279011d99a6.svg",
-    "main.7ed96519.css.map": "/roseplayerreact/static/css/main.7ed96519.css.map",
-    "main.91e71b68.js.map": "/roseplayerreact/static/js/main.91e71b68.js.map",
+    "main.2b568321.css.map": "/roseplayerreact/static/css/main.2b568321.css.map",
+    "main.91d93407.js.map": "/roseplayerreact/static/js/main.91d93407.js.map",
     "787.81efce26.chunk.js.map": "/roseplayerreact/static/js/787.81efce26.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ed96519.css",
-    "static/js/main.91e71b68.js"
+    "static/css/main.2b568321.css",
+    "static/js/main.91d93407.js"
   ]
 }
