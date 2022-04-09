@@ -5,7 +5,7 @@ const Tag = (props) => {
     const navigate = useNavigate();
     let link = '/radioStations/tags/' + props.tag;
     const navigateTo = () => navigate(link);
-    return <Chip label={props.tag} variant="outlined" onClick={navigateTo}/>
+    return <Chip label={props.tag} onClick={navigateTo}/>
 };
 
 export default Tag;

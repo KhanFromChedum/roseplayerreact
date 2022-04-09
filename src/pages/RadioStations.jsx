@@ -292,10 +292,15 @@ class RadioStations extends Component {
   constructor(props) {
     super(props);
     this.state = { json: [] };
+    this.filter = "";
+    this.fname = "";
+    this.bIsUpdated = false;
   }
 
   async componentDidMount() {
     let { filter, fname } = this.props.router.params;
+    this.filter = filter;
+    this.fname = fname;
     let d = {};
     if (filter === "tags") {
       d = await RadioBrowser.GetStations(fname);
@@ -305,9 +310,20 @@ class RadioStations extends Component {
     }
     this.setState({ json: d });
   }
+
+
   async componentDidUpdate(prevProps) {
-    //TODO : ici gérer la mise à jour !!! (pas de rappel + disque de chargement)
-      let { filter, fname } = this.props.router.params;
+    console.log(prevProps);
+    let { filter, fname } = this.props.router.params;
+    
+    if (filter != this.filter || this.fname != fname) {
+      if (this.bIsUpdated == false)
+      {
+        this.bIsUpdated = true;
+        this.setState({ json: [] });
+      }
+      this.filter = filter;
+      this.fname = fname;
       let d = {};
       if (filter === "tags") {
         d = await RadioBrowser.GetStations(fname);
@@ -315,7 +331,9 @@ class RadioStations extends Component {
         console.log(fname);
         d = await RadioBrowser.Search(fname);
       }
+      this.bIsUpdated = false;
       this.setState({ json: d });
+    }
     
   }
 

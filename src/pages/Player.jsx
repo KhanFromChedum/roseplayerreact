@@ -1,8 +1,10 @@
 import { Component } from "react";
+import * as React from 'react';
 import IconButton from "@mui/material/IconButton";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import DefaultIcon from "../img/music_note_black_48dp.svg";
+import Snackbar from '@mui/material/Snackbar';
 
 function PlayButton(props) {
   var callback = props.callback;
@@ -56,13 +58,14 @@ class Player extends Component {
           }}
         />
         <p style={{ textAlign: "center" }}>{this.props.src.name}</p>
-        <audio src={this.props.src.url} autoPlay id="Player" onPlay={() => { this.setState({ play: 'pause' }) }}></audio>
+        <audio src={this.props.src.url} autoPlay id="Player" onPlay={() => { this.setState({ play: 'pause' }) }} onError={() => { alert('Stream not available')} }></audio>
         <PlayButton
           lect={play}
           callback={(call) => {
             this.setState({ play: call });
           }}
         />
+
       </div>
     );
   }

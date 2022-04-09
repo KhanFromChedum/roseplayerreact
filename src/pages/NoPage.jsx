@@ -1,5 +1,5 @@
 const NoPage = () => {
-    return <div>Erreur</div>
+    return <div>Error</div>
 };
 
 export default NoPage;

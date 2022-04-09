@@ -43,7 +43,7 @@ class Layout extends Component {
                     this.setState({ toggled: false });
                   }}
                 >
-                  <Link to="/">Search</Link>
+                  <Link to="roseplayerreact">Search</Link>
                 </div>
               </MenuItem>
               <MenuItem icon={<LocalOfferIcon />}>
@@ -57,18 +57,51 @@ class Layout extends Component {
               </MenuItem>
               <SubMenu title="Styles" icon={<AudiotrackIcon />}>
                 <MenuItem>
-                  <Link to="/radioStations/tags/classical%20music">
-                    Classic
-                  </Link>
+                  <div
+                    onClick={() => {
+                      this.setState({ toggled: false });
+                    }}
+                  >
+                    <Link to="/radioStations/tags/classical%20music">
+                      Classic
+                    </Link>
+                  </div>
                 </MenuItem>
                 <MenuItem>
-                  <Link to="/radioStations/tags/disco">Disco</Link>
+                  <div
+                    onClick={() => {
+                      this.setState({ toggled: false });
+                    }}
+                  >
+                    <Link to="/radioStations/tags/disco">Disco</Link>
+                  </div>
                 </MenuItem>
                 <MenuItem>
-                  <Link to="/radioStations/tags/electro">Electronic</Link>
+                  <div
+                    onClick={() => {
+                      this.setState({ toggled: false });
+                    }}
+                  >
+                    <Link to="/radioStations/tags/electro">Electronic</Link>
+                  </div>
                 </MenuItem>
                 <MenuItem>
-                  <Link to="/radioStations/tags/rock">Rock</Link>
+                  <div
+                    onClick={() => {
+                      this.setState({ toggled: false });
+                    }}
+                  >
+                    <Link to="/radioStations/tags/rnb">RnB</Link>
+                  </div>
+                </MenuItem>
+                <MenuItem>
+                  <div
+                    onClick={() => {
+                      this.setState({ toggled: false });
+                    }}
+                  >
+                    <Link to="/radioStations/tags/rock">Rock</Link>
+                  </div>
                 </MenuItem>
               </SubMenu>
             </Menu>
