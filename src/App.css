@@ -85,6 +85,16 @@ body{
   flex-wrap: wrap;
 }
 
+.flex > div > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.noscrollbar::-webkit-scrollbar
+{
+  display: none; 
+}
+
 .station {
   -webkit-border-top-left-radius: 25px;
   -webkit-border-top-right-radius: 25px;

@@ -107,7 +107,7 @@ class Layout extends Component {
             </Menu>
           </ProSidebar>
         </div>
-        <div className="search">
+        <div className="search noscrollbar">
           <Outlet />
         </div>
         <div className="player">

@@ -1,10 +1,11 @@
-import { Component } from "react";
+import { Component, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import RadioBrowser from "../radio-browser";
 import Tooltip from "@mui/material/Tooltip";
 import HomeIcon from "@mui/icons-material/Home";
 import DefaultIcon from "../img/music_note_black_48dp.svg";
-import ReactLoading from "react-loading";
-
+import InfiniteScroll from "react-infinite-scroller";
+import ReactLoading from 'react-loading';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 var codes = [
@@ -288,106 +289,116 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 
-class RadioStations extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { json: [] };
-    this.filter = "";
-    this.fname = "";
-    this.bIsUpdated = false;
-  }
-
-  async componentDidMount() {
-    let { filter, fname } = this.props.router.params;
-    this.filter = filter;
-    this.fname = fname;
-    let d = {};
-    if (filter === "tags") {
-      d = await RadioBrowser.GetStations(fname);
-    } else if (filter === "search") {
-      console.log(fname);
-      d = await RadioBrowser.Search(fname);
-    }
-    this.setState({ json: d });
-  }
-
-
-  async componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    let { filter, fname } = this.props.router.params;
-    
-    if (filter != this.filter || this.fname != fname) {
-      if (this.bIsUpdated == false)
-      {
-        this.bIsUpdated = true;
-        this.setState({ json: [] });
-      }
-      this.filter = filter;
-      this.fname = fname;
-      let d = {};
-      if (filter === "tags") {
-        d = await RadioBrowser.GetStations(fname);
-      } else if (filter === "search") {
-        console.log(fname);
-        d = await RadioBrowser.Search(fname);
-      }
-      this.bIsUpdated = false;
-      this.setState({ json: d });
-    }
-    
-  }
-
-  onClick(station) {
-    this.props.func(station);
-  }
-
-  render() {
-    let { json } = this.state;
-    if (json.length == 0) {
-      return <ReactLoading type="spin" color="#000000" />;
-    }
-    const stations = json.map((data) => (
-      <div className="station">
-        <img
-          className="logo"
-          src={data.favicon}
+/**
+ * Create a station element
+ * @param {object} props
+ * @returns
+ */
+function Station(props) {
+  let data = props.data;
+  let func = props.func;
+  const onClick = (station) => {
+      func(station);
+  };
+  return (
+    <div className="station" key={props.key } >
+      <img
+        className="logo"
+        src={data.favicon}
+        onClick={() => {
+          onClick(data);
+        }}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null; // prevents looping
+          currentTarget.src = DefaultIcon;
+        }}
+        alt="logo"
+      />
+      <Tooltip title={data.name}>
+        <div
+          className="title"
           onClick={() => {
-            this.onClick(data);
+            onClick(data);
           }}
-          onError={({ currentTarget }) => {
-            currentTarget.onerror = null; // prevents looping
-            currentTarget.src = DefaultIcon;
-          }}
-        />
-        <Tooltip title={data.name}>
-          <div
-            className="title"
-            onClick={() => {
-              this.onClick(data);
-            }}
-          >
-            {data.name}
-          </div>
-        </Tooltip>
-        <div className="country">
-          <Tooltip title={data.country}>
-            <img src={getCountryCode(data.country)} />
-          </Tooltip>
-        </div>
-        <a
-          href={data.homepage}
-          className="homepage"
-          target="_blank"
-          rel="noopener noreferrer"
         >
-          <div>
-            <HomeIcon />
-          </div>
-        </a>
+          {data.name}
+        </div>
+      </Tooltip>
+      <div className="country">
+        <Tooltip title={data.country}>
+          <img src={getCountryCode(data.country)} alt={data.country} />
+        </Tooltip>
       </div>
-    ));
-    return <div className="flex">{stations}</div>;
-  }
+      <a
+        href={data.homepage}
+        className="homepage"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div>
+          <HomeIcon />
+        </div>
+      </a>
+    </div>
+  );
 }
+
+
+function RadioStations(props) {
+  const [items, setItems] = useState(new Array());
+  const [hasMore, setHasMore] = useState(true);
+ 
+  let { filter, fname } = useParams();
+  let radioBrowser = new RadioBrowser();
+
+  if (!radioBrowser.IsLastSearch(filter, fname)) {
+    console.log('ok');
+    radioBrowser.configureSearch(filter, fname);
+    setItems([]);
+    items.length = 0;
+    items.init = 1;
+    setHasMore(true);
+  }
+
+
+  useEffect( () => () => radioBrowser.configureSearch(filter, ''), [] );
+
+  
+  const FetchUpdates = useCallback(async () => {
+    let items2 = await radioBrowser.Next();
+    setItems([...items, ...items2]);
+    if (items2.length < 50) {
+      setHasMore(false);
+    }
+    else { 
+      setHasMore(true);
+    }
+  }, [items,radioBrowser]);
+
+  return (
+    <div class='flex ' style={{ height: "100%", overflow: "auto" }}>
+       <InfiniteScroll
+        pageStart={0}
+        loadMore={FetchUpdates}
+        hasMore={hasMore || items.init != undefined}
+        loader={
+          <ReactLoading type='spin' color='#000000'  />
+        }
+        useWindow={false}
+      >
+        <div key={0}>
+          {items.map((data) => (
+            <Station data={data} func={props.func} key={data.stationuuid}/>
+          ))}
+        </div>
+      </InfiniteScroll>
+    </div>
+  );
+}
+
+
+/*
+
+*/
 
 export default withRouter(RadioStations);
