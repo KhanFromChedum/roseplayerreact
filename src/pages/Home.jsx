@@ -5,7 +5,7 @@ const Home = (props) => {
   const navigate = useNavigate();
     var HandleEvent = (event) => {
       if (event.key === 'Enter') {
-            let link = '/radioStations/search/' + document.getElementById('filled-search').value;
+            let link = '/roseplayerreact/radioStations/search/' + document.getElementById('filled-search').value;
             const navigateTo = () => navigate(link);
         navigateTo();
         }

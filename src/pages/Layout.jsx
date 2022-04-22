@@ -52,7 +52,7 @@ class Layout extends Component {
                     this.setState({ toggled: false });
                   }}
                 >
-                  <Link to="/tags">Tags</Link>
+                  <Link to="roseplayerreact/tags">Tags</Link>
                 </div>
               </MenuItem>
               <SubMenu title="Styles" icon={<AudiotrackIcon />}>
@@ -62,7 +62,7 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/radioStations/tags/classical%20music">
+                    <Link to="/roseplayerreact/radioStations/tags/classical%20music">
                       Classic
                     </Link>
                   </div>
@@ -73,7 +73,7 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/radioStations/tags/disco">Disco</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/disco">Disco</Link>
                   </div>
                 </MenuItem>
                 <MenuItem>
@@ -82,7 +82,7 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/radioStations/tags/electro">Electronic</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/electro">Electronic</Link>
                   </div>
                 </MenuItem>
                 <MenuItem>
@@ -91,7 +91,7 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/radioStations/tags/rnb">RnB</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/rnb">RnB</Link>
                   </div>
                 </MenuItem>
                 <MenuItem>
@@ -100,7 +100,7 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/radioStations/tags/rock">Rock</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/rock">Rock</Link>
                   </div>
                 </MenuItem>
               </SubMenu>

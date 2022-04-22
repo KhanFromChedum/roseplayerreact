@@ -29,9 +29,9 @@ class App extends Component
         <Routes>
           <Route path="/" element={<Layout station={station }/>}>
             <Route index element={<Home />} />
-            <Route path="roseplayerreact" element={<Home />} />
-            <Route path="/tags" element={<TagsPage />} />
-            <Route path="/radioStations/:filter/:fname" element={<RadioStations func={this.getStation.bind(this)}/>} />
+            <Route path="/roseplayerreact" element={<Home />} />
+            <Route path="/roseplayerreact/tags" element={<TagsPage />} />
+            <Route path="/roseplayerreact/radioStations/:filter/:fname" element={<RadioStations func={this.getStation.bind(this)}/>} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
