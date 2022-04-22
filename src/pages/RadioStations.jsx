@@ -298,6 +298,7 @@ function Station(props) {
   let data = props.data;
   let func = props.func;
   const onClick = (station) => {
+    RadioBrowser.Vote(data);
       func(station);
   };
   return (

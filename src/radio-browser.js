@@ -49,7 +49,6 @@ class RadioBrowser{
     async Search(name) {
         this.limit = 50;
         let link = 'https://nl1.api.radio-browser.info/json/stations/search?name=' + name + "&offset=" + RadioBrowser.offset + "&limit=" + RadioBrowser.limit;
-        console.log(link);
         const response = await fetch(link, {
             method: 'GET',
             headers: {
@@ -81,7 +80,19 @@ class RadioBrowser{
         RadioBrowser.offset = RadioBrowser.limit + RadioBrowser.offset;
         return json;
         
-    }   
+    }  
+    
+    static async Vote(data)
+    {
+        let link = 'https://nl1.api.radio-browser.info/json/vote/' + data.stationuuid;
+        const response = await fetch(link, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json'
+            }
+        });
+        console.log(await response.json());
+    }
 }
 
 
