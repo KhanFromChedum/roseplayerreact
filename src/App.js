@@ -7,6 +7,7 @@ import TagsPage from './pages/TagsPage';
 import NoPage from './pages/NoPage'
 import RadioStations from './pages/RadioStations';
 import { Component } from 'react';
+import CountriesPage from './pages/CountriesPage';
 
 
 class App extends Component
@@ -31,6 +32,7 @@ class App extends Component
             <Route index element={<Home />} />
             <Route path="/roseplayerreact" element={<Home />} />
             <Route path="/roseplayerreact/tags" element={<TagsPage />} />
+            <Route path="/roseplayerreact/countries" element={<CountriesPage />} />
             <Route path="/roseplayerreact/radioStations/:filter/:fname" element={<RadioStations func={this.getStation.bind(this)}/>} />
             <Route path="*" element={<NoPage />} />
           </Route>

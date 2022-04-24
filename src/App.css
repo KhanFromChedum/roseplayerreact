@@ -37,8 +37,7 @@
   }
 }
 
-body{
-
+body {
 }
 
 .parent {
@@ -48,23 +47,20 @@ body{
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: 100vh;
-
 }
 
-.Background
-{
-  background:url(./img/austin-neill-hgO1wFPXl3I-unsplash.jpg);
-  position:absolute;
+.Background {
+  background: url(./img/austin-neill-hgO1wFPXl3I-unsplash.jpg);
+  position: absolute;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  top:0;
-  left:0;
-  opacity:.4;
-  z-index:-1;
-  height:100vh;
-  width:100vw;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
 }
-
 
 .menu {
   grid-area: 1 / 1 / 6 / 2;
@@ -90,9 +86,8 @@ body{
   flex-wrap: wrap;
 }
 
-.noscrollbar::-webkit-scrollbar
-{
-  display: none; 
+.noscrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 .station {
@@ -104,7 +99,7 @@ body{
   border-top-right-radius: 25px;
   display: grid;
   margin: 10px;
-  
+
   grid-template-columns: 100px 100px;
   grid-template-rows: 75px 75px 30px 30px; /*repeat(4, 1fr);*/
   grid-column-gap: 0px;
@@ -152,7 +147,7 @@ body{
   background-color: #fca311;
   justify-content: center;
   align-items: center;
-  color:#14213d;
+  color: #14213d;
 }
 
 .PlayerLogo {
@@ -171,19 +166,50 @@ body{
   display: none;
 }
 
-.SearchPage
-{
+.SearchPage {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+.ReactModal__Overlay {
+  z-index: 2000;
+}
+
+.Modal {
+  display: flex;
+  flex-direction: row;
+}
+
+.Modal > img{
+
+  width:300px;
+}
+
+.Modal > span{
+
+}
+
 @media only screen and (max-width: 768px) {
-  .Background
-  {
-    background:url(./img/Phone.jpg);
-    position:absolute;
+  .Modal {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Modal > img{
+  
+    width:300px;
+  }
+  
+  .Modal > span{
+  
+  }
+
+
+  .Background {
+    background: url(./img/Phone.jpg);
+    position: absolute;
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -205,8 +231,7 @@ body{
     height: calc(95vh - 130px);
     margin-top: 10px;
   }
-  .SearchPage
-  {
+  .SearchPage {
     height: auto;
   }
   .player {
@@ -227,12 +252,11 @@ body{
   }
   .HamburgerMenu {
     display: inline;
-    top:10px;
+    top: 10px;
   }
-  .station
-  {
+  .station {
     grid-template-columns: 75px 75px;
-  } 
+  }
   .logo {
     height: 150px;
     width: 150px;

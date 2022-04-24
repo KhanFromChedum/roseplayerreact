@@ -7,6 +7,7 @@ import { Squash as Hamburger } from "hamburger-react";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import SearchIcon from "@mui/icons-material/Search";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
+import FlagIcon from '@mui/icons-material/Flag';
 
 class Layout extends Component {
   constructor(props) {
@@ -55,6 +56,15 @@ class Layout extends Component {
                   <Link to="roseplayerreact/tags">Tags</Link>
                 </div>
               </MenuItem>
+              <MenuItem icon={<FlagIcon />}>
+                <div
+                  onClick={() => {
+                    this.setState({ toggled: false });
+                  }}
+                >
+                  <Link to="roseplayerreact/countries">Countries</Link>
+                </div>
+              </MenuItem>              
               <SubMenu title="Styles" icon={<AudiotrackIcon />}>
                 <MenuItem>
                   <div

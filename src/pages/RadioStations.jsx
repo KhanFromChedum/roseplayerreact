@@ -5,8 +5,12 @@ import Tooltip from "@mui/material/Tooltip";
 import HomeIcon from "@mui/icons-material/Home";
 import DefaultIcon from "../img/music_note_black_48dp.svg";
 import InfiniteScroll from "react-infinite-scroller";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
+import HelpIcon from '@mui/icons-material/Help';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Modal from "react-modal";
+import Tag from "./Tag";
+
 
 var codes = [
   { name: "Israel", dial_code: "+972", code: "IL" },
@@ -261,7 +265,7 @@ var codes = [
   { name: "Svalbard and Jan Mayen", dial_code: "+47", code: "SJ" },
   { name: "Syrian Arab Republic", dial_code: "+963", code: "SY" },
   { name: "Taiwan Province Of China", dial_code: "+886", code: "TW" },
-  { name: "Tanzania, United Republic of", dial_code: "+255", code: "TZ" },
+  { name: "United Republic Of Tanzania", dial_code: "+255", code: "TZ" },
   { name: "Timor-Leste", dial_code: "+670", code: "TL" },
   { name: "Bolivarian Republic Of Venezuela", dial_code: "+58", code: "VE" },
   { name: "Viet Nam", dial_code: "+84", code: "VN" },
@@ -297,12 +301,30 @@ function withRouter(Component) {
 function Station(props) {
   let data = props.data;
   let func = props.func;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   const onClick = (station) => {
     RadioBrowser.Vote(data);
-      func(station);
+    func(station);
   };
+
+  const navigate = useNavigate();
+  let link = "/roseplayerreact/radioStations/country/";
+  const navigateTo = (data) => navigate(link + data.country);
+  let tags = data.tags.split(",").map((tag) => <Tag tag={tag} />);
   return (
-    <div className="station" key={props.key } >
+    <div className="station" key={props.key}>
       <img
         className="logo"
         src={data.favicon}
@@ -327,33 +349,52 @@ function Station(props) {
       </Tooltip>
       <div className="country">
         <Tooltip title={data.country}>
-          <img src={getCountryCode(data.country)} alt={data.country} />
+          <img
+            src={getCountryCode(data.country)}
+            alt={data.country}
+            onClick={() => {
+              navigateTo(data);
+            }}
+          />
         </Tooltip>
       </div>
-      <a
-        href={data.homepage}
-        className="homepage"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div>
-          <HomeIcon />
+      <div>
+        <div onClick={openModal} className='homepage'>
+          <HelpIcon/>
+        
         </div>
-      </a>
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          contentLabel="Example Modal"
+        >
+          <div className="Modal">
+            <img src={data.favicon} />
+            <span>
+              <h1>{data.name}</h1>
+              <p>Codec : {data.codec}</p>
+              <p>Bitrate : {data.bitrate}</p>
+              <p>Homepage : <a href={data.homepage} target="_blank" rel="noopener noreferrer"><HomeIcon /></a></p>
+              <p>Languages : { data.language}</p>
+              {tags}
+              
+            </span>
+          </div>
+        </Modal>
+      </div>
     </div>
   );
 }
 
-
 function RadioStations(props) {
   const [items, setItems] = useState(new Array());
   const [hasMore, setHasMore] = useState(true);
- 
+
   let { filter, fname } = useParams();
   let radioBrowser = new RadioBrowser();
 
   if (!radioBrowser.IsLastSearch(filter, fname)) {
-    console.log('ok');
     radioBrowser.configureSearch(filter, fname);
     setItems([]);
     items.length = 0;
@@ -361,42 +402,37 @@ function RadioStations(props) {
     setHasMore(true);
   }
 
+  useEffect(() => () => radioBrowser.configureSearch(filter, ""), []);
 
-  useEffect( () => () => radioBrowser.configureSearch(filter, ''), [] );
-
-  
   const FetchUpdates = useCallback(async () => {
     let items2 = await radioBrowser.Next();
+    console.log(items2);
     setItems([...items, ...items2]);
     if (items2.length < 50) {
       setHasMore(false);
-    }
-    else { 
+    } else {
       setHasMore(true);
     }
-  }, [items,radioBrowser]);
+  }, [items, radioBrowser]);
 
   return (
-    <div class='flex ' style={{ height: "100%", overflow: "auto" }}>
-       <InfiniteScroll
+    <div className="flex " style={{ height: "100%", overflow: "auto" }}>
+      <InfiniteScroll
         pageStart={0}
         loadMore={FetchUpdates}
         hasMore={hasMore || items.init != undefined}
-        loader={
-          <ReactLoading type='spin' color='#000000'  />
-        }
+        loader={<ReactLoading type="spin" color="#000000" />}
         useWindow={false}
       >
         <div key={0}>
           {items.map((data) => (
-            <Station data={data} func={props.func} key={data.stationuuid}/>
+            <Station data={data} func={props.func} key={data.stationuuid} />
           ))}
         </div>
       </InfiniteScroll>
     </div>
   );
 }
-
 
 /*
 
