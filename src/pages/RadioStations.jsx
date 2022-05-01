@@ -6,11 +6,13 @@ import HomeIcon from "@mui/icons-material/Home";
 import DefaultIcon from "../img/music_note_black_48dp.svg";
 import InfiniteScroll from "react-infinite-scroller";
 import ReactLoading from "react-loading";
-import HelpIcon from '@mui/icons-material/Help';
+import HelpIcon from "@mui/icons-material/Help";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Modal from "react-modal";
 import Tag from "./Tag";
-
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import Favorite from "../repository";
 
 var codes = [
   { name: "Israel", dial_code: "+972", code: "IL" },
@@ -293,6 +295,36 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 
+function Fav(props) {
+  let data = props.data;
+  const [isFav, setFav] = React.useState(Favorite.Exist(data));
+  if (isFav) {
+    return (
+      <div
+        className="Favorite"
+        onClick={() => {
+          Favorite.Remove(data);
+          setFav(Favorite.Exist(data));
+        }}
+      >
+        <FavoriteIcon />
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className="Favorite"
+        onClick={() => {
+          Favorite.Add(data);
+          setFav(Favorite.Exist(data));
+        }}
+      >
+        <FavoriteBorderIcon />
+      </div>
+    );
+  }
+}
+
 /**
  * Create a station element
  * @param {object} props
@@ -325,18 +357,21 @@ function Station(props) {
   let tags = data.tags.split(",").map((tag) => <Tag tag={tag} />);
   return (
     <div className="station" key={props.key}>
-      <img
-        className="logo"
-        src={data.favicon}
-        onClick={() => {
-          onClick(data);
-        }}
-        onError={({ currentTarget }) => {
-          currentTarget.onerror = null; // prevents looping
-          currentTarget.src = DefaultIcon;
-        }}
-        alt="logo"
-      />
+      <div className="logo">
+        <img
+          className="logo"
+          src={data.favicon}
+          onClick={() => {
+            onClick(data);
+          }}
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null; // prevents looping
+            currentTarget.src = DefaultIcon;
+          }}
+          alt="logo"
+        />
+        <Fav data={data} />
+      </div>
       <Tooltip title={data.name}>
         <div
           className="title"
@@ -358,10 +393,9 @@ function Station(props) {
           />
         </Tooltip>
       </div>
-      <div>
-        <div onClick={openModal} className='homepage'>
-          <HelpIcon/>
-        
+      <div className="homepage">
+        <div onClick={openModal}>
+          <HelpIcon />
         </div>
         <Modal
           isOpen={modalIsOpen}
@@ -375,10 +409,18 @@ function Station(props) {
               <h1>{data.name}</h1>
               <p>Codec : {data.codec}</p>
               <p>Bitrate : {data.bitrate}</p>
-              <p>Homepage : <a href={data.homepage} target="_blank" rel="noopener noreferrer"><HomeIcon /></a></p>
-              <p>Languages : { data.language}</p>
+              <p>
+                Homepage :{" "}
+                <a
+                  href={data.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <HomeIcon />
+                </a>
+              </p>
+              <p>Languages : {data.language}</p>
               {tags}
-              
             </span>
           </div>
         </Modal>

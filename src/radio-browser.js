@@ -1,3 +1,5 @@
+import Favorite from './repository';
+
 class RadioBrowser{
     static offset=0;
     static limit=50;
@@ -79,6 +81,32 @@ class RadioBrowser{
         return await response.json();
     }
 
+
+    static async ByUUID()
+    {
+        if (RadioBrowser.offset === 0) {
+            let search = Favorite.GetAll().join(',');
+            let link = 'https://nl1.api.radio-browser.info/json/stations/byuuid?uuids=' + search;
+            console.log(link);
+            const response = await fetch(link, {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json'
+                },
+            });
+
+            if (!response.ok) {
+                throw 'Error on retreive data from server';
+            }
+            RadioBrowser.offset = 1;
+            return await response.json(); 
+        }
+        else
+        {
+            return [];
+        }
+    }
+
     async Next()
     {
         let json = [];
@@ -93,6 +121,9 @@ class RadioBrowser{
                 break;       
             case 'country':
                 json = await RadioBrowser.ByCountries(RadioBrowser.SearchVar);
+                break;
+            case 'uuids':
+                json = await RadioBrowser.ByUUID();
                 break;
             default:
                 json = [];

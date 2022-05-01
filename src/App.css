@@ -183,11 +183,22 @@ body {
 }
 
 .Modal > img{
-
   width:300px;
 }
 
-.Modal > span{
+.Favorite
+{
+  position: relative;
+  top:-140px;
+  left: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #fca311;;
+  
+}
+
+.Favorite>svg{
+  
 
 }
 
@@ -199,12 +210,9 @@ body {
   
   .Modal > img{
   
-    width:300px;
+    width:100%;
   }
   
-  .Modal > span{
-  
-  }
 
 
   .Background {

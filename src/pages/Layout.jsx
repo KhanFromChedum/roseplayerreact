@@ -8,6 +8,7 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import SearchIcon from "@mui/icons-material/Search";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import FlagIcon from '@mui/icons-material/Flag';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 class Layout extends Component {
   constructor(props) {
@@ -47,6 +48,15 @@ class Layout extends Component {
                   <Link to="roseplayerreact">Search</Link>
                 </div>
               </MenuItem>
+              <MenuItem icon={<FavoriteIcon />}>
+                <div
+                  onClick={() => {
+                    this.setState({ toggled: false });
+                  }}
+                >
+                  <Link to="/roseplayerreact/radioStations/uuids/all">Favorites</Link>
+                </div>
+              </MenuItem>              
               <MenuItem icon={<LocalOfferIcon />}>
                 <div
                   onClick={() => {
