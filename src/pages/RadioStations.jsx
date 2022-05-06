@@ -77,7 +77,7 @@ var codes = [
   { name: "Eritrea", dial_code: "+291", code: "ER" },
   { name: "Estonia", dial_code: "+372", code: "EE" },
   { name: "Ethiopia", dial_code: "+251", code: "ET" },
-  { name: "Faroe Islands", dial_code: "+298", code: "FO" },
+  { name: "The Faroe Islands", dial_code: "+298", code: "FO" },
   { name: "Fiji", dial_code: "+679", code: "FJ" },
   { name: "Finland", dial_code: "+358", code: "FI" },
   { name: "France", dial_code: "+33", code: "FR" },
@@ -270,7 +270,7 @@ var codes = [
   { name: "United Republic Of Tanzania", dial_code: "+255", code: "TZ" },
   { name: "Timor-Leste", dial_code: "+670", code: "TL" },
   { name: "Bolivarian Republic Of Venezuela", dial_code: "+58", code: "VE" },
-  { name: "Viet Nam", dial_code: "+84", code: "VN" },
+  { name: "Vietnam", dial_code: "+84", code: "VN" },
   { name: "British Virgin Islands", dial_code: "+1 284", code: "VG" },
   { name: "US Virgin Islands", dial_code: "+1 340", code: "VI" },
 ];

@@ -7,8 +7,10 @@ import { Squash as Hamburger } from "hamburger-react";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import SearchIcon from "@mui/icons-material/Search";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
-import FlagIcon from '@mui/icons-material/Flag';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FlagIcon from "@mui/icons-material/Flag";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
+import LanguageIcon from "@mui/icons-material/Language";
 
 class Layout extends Component {
   constructor(props) {
@@ -54,9 +56,11 @@ class Layout extends Component {
                     this.setState({ toggled: false });
                   }}
                 >
-                  <Link to="/roseplayerreact/radioStations/uuids/all">Favorites</Link>
+                  <Link to="/roseplayerreact/radioStations/uuids/all">
+                    Favorites
+                  </Link>
                 </div>
-              </MenuItem>              
+              </MenuItem>
               <MenuItem icon={<LocalOfferIcon />}>
                 <div
                   onClick={() => {
@@ -74,7 +78,16 @@ class Layout extends Component {
                 >
                   <Link to="roseplayerreact/countries">Countries</Link>
                 </div>
-              </MenuItem>              
+              </MenuItem>
+              <MenuItem icon={<LanguageIcon />}>
+                <div
+                  onClick={() => {
+                    this.setState({ toggled: false });
+                  }}
+                >
+                  <Link to="roseplayerreact/map">Map</Link>
+                </div>
+              </MenuItem>
               <SubMenu title="Styles" icon={<AudiotrackIcon />}>
                 <MenuItem>
                   <div
@@ -93,7 +106,9 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/disco">Disco</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/disco">
+                      Disco
+                    </Link>
                   </div>
                 </MenuItem>
                 <MenuItem>
@@ -102,7 +117,9 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/electro">Electronic</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/electro">
+                      Electronic
+                    </Link>
                   </div>
                 </MenuItem>
                 <MenuItem>
@@ -111,7 +128,9 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/rnb">RnB</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/rnb">
+                      RnB
+                    </Link>
                   </div>
                 </MenuItem>
                 <MenuItem>
@@ -120,7 +139,9 @@ class Layout extends Component {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/rock">Rock</Link>
+                    <Link to="/roseplayerreact/radioStations/tags/rock">
+                      Rock
+                    </Link>
                   </div>
                 </MenuItem>
               </SubMenu>

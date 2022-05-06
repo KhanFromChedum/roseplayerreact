@@ -48,6 +48,24 @@ class RadioBrowser{
         return await response.json();
     }
 
+    static async AllGeo()
+    {
+        let link = 'https://nl1.api.radio-browser.info/json/stations/search?has_geo_info=true';
+        const response = await fetch(link, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json'
+            },
+        });
+
+        if (!response.ok) {
+            throw 'Error on retreive data from server';
+        }
+        return await response.json();        
+
+
+    }
+
     static async ByCountries(country)
     {
         RadioBrowser.limit = 50;
