@@ -1,6 +1,13 @@
 import { Outlet, Link } from "react-router-dom";
 import { Component } from "react";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  SidebarContent,
+  SidebarFooter,
+} from "react-pro-sidebar";
 import Player from "./Player";
 import "react-pro-sidebar/dist/css/styles.css";
 import { Squash as Hamburger } from "hamburger-react";
@@ -40,112 +47,119 @@ class Layout extends Component {
               this.setState({ toggled: false });
             }}
           >
-            <Menu iconShape="square">
-              <MenuItem icon={<SearchIcon />}>
-                <div
-                  onClick={() => {
-                    this.setState({ toggled: false });
-                  }}
-                >
-                  <Link to="roseplayerreact">Search</Link>
-                </div>
-              </MenuItem>
-              <MenuItem icon={<FavoriteIcon />}>
-                <div
-                  onClick={() => {
-                    this.setState({ toggled: false });
-                  }}
-                >
-                  <Link to="/roseplayerreact/radioStations/uuids/all">
-                    Favorites
-                  </Link>
-                </div>
-              </MenuItem>
-              <MenuItem icon={<LocalOfferIcon />}>
-                <div
-                  onClick={() => {
-                    this.setState({ toggled: false });
-                  }}
-                >
-                  <Link to="roseplayerreact/tags">Tags</Link>
-                </div>
-              </MenuItem>
-              <MenuItem icon={<FlagIcon />}>
-                <div
-                  onClick={() => {
-                    this.setState({ toggled: false });
-                  }}
-                >
-                  <Link to="roseplayerreact/countries">Countries</Link>
-                </div>
-              </MenuItem>
-              <MenuItem icon={<LanguageIcon />}>
-                <div
-                  onClick={() => {
-                    this.setState({ toggled: false });
-                  }}
-                >
-                  <Link to="roseplayerreact/map">Map</Link>
-                </div>
-              </MenuItem>
-              <SubMenu title="Styles" icon={<AudiotrackIcon />}>
-                <MenuItem>
+            <SidebarContent>
+              <Menu iconShape="square">
+                <MenuItem icon={<SearchIcon />}>
                   <div
                     onClick={() => {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/classical%20music">
-                      Classic
-                    </Link>
+                    <Link to="roseplayerreact">Search</Link>
                   </div>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem icon={<FavoriteIcon />}>
                   <div
                     onClick={() => {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/disco">
-                      Disco
+                    <Link to="/roseplayerreact/radioStations/uuids/all">
+                      Favorites
                     </Link>
                   </div>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem icon={<LocalOfferIcon />}>
                   <div
                     onClick={() => {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/electro">
-                      Electronic
-                    </Link>
+                    <Link to="roseplayerreact/tags">Tags</Link>
                   </div>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem icon={<FlagIcon />}>
                   <div
                     onClick={() => {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/rnb">
-                      RnB
-                    </Link>
+                    <Link to="roseplayerreact/countries">Countries</Link>
                   </div>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem icon={<LanguageIcon />}>
                   <div
                     onClick={() => {
                       this.setState({ toggled: false });
                     }}
                   >
-                    <Link to="/roseplayerreact/radioStations/tags/rock">
-                      Rock
-                    </Link>
+                    <Link to="roseplayerreact/map">Map</Link>
                   </div>
                 </MenuItem>
-              </SubMenu>
-            </Menu>
+                <SubMenu title="Styles" icon={<AudiotrackIcon />}>
+                  <MenuItem>
+                    <div
+                      onClick={() => {
+                        this.setState({ toggled: false });
+                      }}
+                    >
+                      <Link to="/roseplayerreact/radioStations/tags/classical%20music">
+                        Classic
+                      </Link>
+                    </div>
+                  </MenuItem>
+                  <MenuItem>
+                    <div
+                      onClick={() => {
+                        this.setState({ toggled: false });
+                      }}
+                    >
+                      <Link to="/roseplayerreact/radioStations/tags/disco">
+                        Disco
+                      </Link>
+                    </div>
+                  </MenuItem>
+                  <MenuItem>
+                    <div
+                      onClick={() => {
+                        this.setState({ toggled: false });
+                      }}
+                    >
+                      <Link to="/roseplayerreact/radioStations/tags/electro">
+                        Electronic
+                      </Link>
+                    </div>
+                  </MenuItem>
+                  <MenuItem>
+                    <div
+                      onClick={() => {
+                        this.setState({ toggled: false });
+                      }}
+                    >
+                      <Link to="/roseplayerreact/radioStations/tags/rnb">
+                        RnB
+                      </Link>
+                    </div>
+                  </MenuItem>
+                  <MenuItem>
+                    <div
+                      onClick={() => {
+                        this.setState({ toggled: false });
+                      }}
+                    >
+                      <Link to="/roseplayerreact/radioStations/tags/rock">
+                        Rock
+                      </Link>
+                    </div>
+                  </MenuItem>
+                </SubMenu>
+              </Menu>
+            </SidebarContent>
+            <SidebarFooter>
+              <a class="menu-link" href="https://www.radio-browser.info/">
+                Powererd by RadioBrowser
+              </a>
+            </SidebarFooter>
           </ProSidebar>
         </div>
         <div className="search noscrollbar">

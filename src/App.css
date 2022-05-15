@@ -198,9 +198,36 @@ body {
 .Favorite > svg {
 }
 
+menu-link {
+  text-decoration:none;
+  border-bottom: 2px solid #ef8b80;
+  box-shadow: inset 0 -4px 0 #ef8b80;
+  color: inherit;
+}
+
 .map-container {
   height: 100vh;
   width: 100%;
+}
+
+.Clickable
+{
+  cursor: pointer;
+}
+
+.CloseButton
+{
+  width: 100%;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #8F8F8F;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
 }
 
 @media only screen and (max-width: 768px) {

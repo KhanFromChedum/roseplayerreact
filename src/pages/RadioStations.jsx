@@ -301,7 +301,7 @@ function Fav(props) {
   if (isFav) {
     return (
       <div
-        className="Favorite"
+        className="Favorite Clickable"
         onClick={() => {
           Favorite.Remove(data);
           setFav(Favorite.Exist(data));
@@ -313,7 +313,7 @@ function Fav(props) {
   } else {
     return (
       <div
-        className="Favorite"
+        className="Favorite Clickable"
         onClick={() => {
           Favorite.Add(data);
           setFav(Favorite.Exist(data));
@@ -382,7 +382,7 @@ function Station(props) {
           {data.name}
         </div>
       </Tooltip>
-      <div className="country">
+      <div className="country Clickable">
         <Tooltip title={data.country}>
           <img
             src={getCountryCode(data.country)}
@@ -393,7 +393,7 @@ function Station(props) {
           />
         </Tooltip>
       </div>
-      <div className="homepage">
+      <div className="homepage Clickable">
         <div onClick={openModal}>
           <HelpIcon />
         </div>
@@ -403,8 +403,12 @@ function Station(props) {
           onRequestClose={closeModal}
           contentLabel="Example Modal"
         >
+          <p onClick={closeModal} className="CloseButton Clickable">
+            Close
+          </p>
           <div className="Modal">
             <img src={data.favicon} />
+
             <span>
               <h1>{data.name}</h1>
               <p>Codec : {data.codec}</p>
